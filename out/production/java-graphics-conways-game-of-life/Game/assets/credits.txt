@@ -1,0 +1,20 @@
+Programming:
+Alexander Snyder
+
+Music Editing:
+Alexander Snyder
+
+Musicians
+
+
+Play Testing:
+Alexander Snyder
+
+And Thank you to Everyone Who Made This Game Possible
+
+Made Using Java in Eclipse
+
+Code available on GitHub at: 
+https://github.com/Digicat509/java-graphics-conways-game-of-life/tree/main/Game/catformer
+
+Thank You For Playing

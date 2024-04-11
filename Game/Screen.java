@@ -37,6 +37,7 @@ public class Screen extends GameObject{
 	long globalTime;
 
 	public Screen() {
+		super(Integer.MIN_VALUE);
 		color = new Color(164, 143, 181);
 		font = "roboto";
 		ConwaysGame.game.getHandeler().add(this, false);
@@ -97,16 +98,6 @@ public class Screen extends GameObject{
 		if(ConwaysGame.game.state == State.PLAYING)
 		{
 			if(on) {
-				if(!toAdd.isEmpty()) {
-					game.addAll(toAdd);
-					toAdd.clear();
-					System.out.println("add!!!!!!!!!!!");
-				}
-//				if(!toRemove.isEmpty()) {
-//					game.removeAll(toRemove);
-//					toRemove.clear();
-//					System.out.println("remove!!!!!!!!!!!!!!");
-//				}
 				ConwaysGame.game.setMaxFPS(2);
 				globalTime = System.currentTimeMillis();
 				int minX = Integer.MAX_VALUE;
@@ -127,11 +118,25 @@ public class Screen extends GameObject{
 					for (int y = (int) minY-1; y <= maxY+1; y++) {
 						Entity e = new Entity(x, y);
 						System.out.println(e.numNeighbors());
-						if (e.numNeighbors() == 3) {
+						if (e.numNeighbors() == 3 && !game.contains(e)) {
 							toAdd.add(e);
-							ConwaysGame.game.getHandeler().add(e, false);
+//							ConwaysGame.game.getHandeler().add(e, false);
 						}
 					}
+				}
+				if(!toAdd.isEmpty()) {
+					game.addAll(toAdd);
+					for(Entity e: toAdd)
+						ConwaysGame.game.getHandeler().add(e, false);
+					toAdd.clear();
+					System.out.println("add!!!!!!!!!!!");
+				}
+				if(!toRemove.isEmpty()) {
+					game.removeAll(toRemove);
+					for(Entity e: toRemove)
+						ConwaysGame.game.getHandeler().remove(e);
+					toRemove.clear();
+					System.out.println("remove!!!!!!!!!!!!!!");
 				}
 			}
 			else {
@@ -146,7 +151,7 @@ public class Screen extends GameObject{
 			}
 			if(ConwaysGame.game.getInput().isKey(KeyEvent.VK_ENTER) && keyPressDelayTimer.timeUp()) {
 				on = !on;
-				keyPressDelayTimer = new Timer(.2);
+				keyPressDelayTimer = new Timer(.1);
 			}
 		}
 	}

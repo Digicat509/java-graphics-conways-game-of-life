@@ -18,7 +18,7 @@ public class Entity extends GameObject implements Comparable<GameObject>{
         int neighbors = numNeighbors();
         if(neighbors < 2 || neighbors > 3) {
             ConwaysGame.screen.toRemove.add(this);
-            ConwaysGame.game.getHandeler().remove(this);
+//            ConwaysGame.game.getHandeler().remove(this);
         }
     }
     public int numNeighbors() {

@@ -77,7 +77,7 @@ public class Handler {
 		addHand.clear();
 		if(render) {
 			for(GameObject o: hand) {
-				if(o.x+o.w >= -ge.getWidth()/4 && o.y+o.h >= -ge.getHeight()/4 && o.x <= ge.getWidth()*1.25 && o.y <= ge.getHeight()*1.25)
+//				if(o.x+o.w >= -ge.getWidth()/4 && o.y+o.h >= -ge.getHeight()/4 && o.x <= ge.getWidth()*1.25 && o.y <= ge.getHeight()*1.25)
 					o.draw(g);
 			}
 		}

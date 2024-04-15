@@ -117,10 +117,8 @@ public class Screen extends GameObject{
 				for (int x = (int) minX-1; x <= maxX+1; x++) {
 					for (int y = (int) minY-1; y <= maxY+1; y++) {
 						Entity e = new Entity(x, y);
-						System.out.println(e.numNeighbors());
 						if (e.numNeighbors() == 3 && !game.contains(e)) {
 							toAdd.add(e);
-//							ConwaysGame.game.getHandeler().add(e, false);
 						}
 					}
 				}
@@ -129,14 +127,12 @@ public class Screen extends GameObject{
 					for(Entity e: toAdd)
 						ConwaysGame.game.getHandeler().add(e, false);
 					toAdd.clear();
-					System.out.println("add!!!!!!!!!!!");
 				}
 				if(!toRemove.isEmpty()) {
 					game.removeAll(toRemove);
 					for(Entity e: toRemove)
 						ConwaysGame.game.getHandeler().remove(e);
 					toRemove.clear();
-					System.out.println("remove!!!!!!!!!!!!!!");
 				}
 			}
 			else {
